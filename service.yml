@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: hello-v1
+  name: hello
   namespace: default
 spec:
   type: ClusterIP
@@ -10,4 +10,4 @@ spec:
       protocol: TCP
       targetPort: 8080
   selector:
-    run: hello-v1
+    run: hello

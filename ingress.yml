@@ -8,7 +8,7 @@ metadata:
 spec:
   defaultBackend:
     service:
-      name: hello-v1
+      name: hello
       port:
         number: 8080
 ---
