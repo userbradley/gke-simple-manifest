@@ -1,0 +1,14 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: k8-lb
+  annotations:
+    #kubernetes.io/ingress.global-static-ip-name: "simple-ip"
+    kubernetes.io/ingress.class: "gce"
+spec:
+  defaultBackend:
+    service:
+      name: hello-v1
+      port:
+        number: 8080
+---

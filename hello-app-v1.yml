@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-v1
+  namespace: default
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      run: hello-v1
+  template:
+    metadata:
+      labels:
+        run: hello-v1
+    spec:
+      containers:
+        - image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
+          imagePullPolicy: IfNotPresent
+          name: hello-v1
+          ports:
+            - containerPort: 8080
+              protocol: TCP
