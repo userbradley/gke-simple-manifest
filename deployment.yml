@@ -7,16 +7,16 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      run: hello
+      run: hello-v1
   template:
     metadata:
       labels:
-        run: hello
+        run: hello-v1
     spec:
       containers:
         - image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:1.0
           imagePullPolicy: IfNotPresent
-          name: hello
+          name: hello-v1
           ports:
             - containerPort: 8080
               protocol: TCP
