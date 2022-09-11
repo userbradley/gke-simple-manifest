@@ -20,3 +20,41 @@ spec:
           ports:
             - containerPort: 8080
               protocol: TCP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-v2
+  namespace: default
+spec:
+  replicas: 840
+  selector:
+    matchLabels:
+      run: hello-v2
+  template:
+    metadata:
+      labels:
+        run: hello-v2
+    spec:
+      containers:
+        - image: us-docker.pkg.dev/google-samples/containers/gke/hello-app:2.0
+          imagePullPolicy: IfNotPresent
+          name: hello-v2
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-v2
+  namespace: default
+spec:
+  ports:
+    - port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    run: hello-v2
+  type: ClusterIP
+
