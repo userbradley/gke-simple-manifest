@@ -27,7 +27,7 @@ metadata:
   name: hello-v2
   namespace: default
 spec:
-  replicas: 3
+  replicas: 4
   selector:
     matchLabels:
       run: hello-v2
